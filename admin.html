@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>แอดมิน · เช็คชื่ออบรม</title>
+  <link rel="icon" href="img/coconut.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="wrap wide">
+    <header class="top">
+      <img src="img/coconut.svg" alt="">
+      <div>
+        <h1>เช็คชื่ออบรม · แอดมิน</h1>
+        <div class="sub" id="who"></div>
+      </div>
+      <span class="spacer"></span>
+      <button class="btn btn-sm hidden" id="logout"><i data-lucide="log-out"></i>ออกจากระบบ</button>
+    </header>
+
+    <div id="flash" class="msg hidden" style="margin-bottom:12px"></div>
+    <div id="view"><p class="muted">กำลังโหลด...</p></div>
+  </main>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="card stack">
+      <p id="modal-text" style="margin:0;font-size:1.05rem"></p>
+      <div class="row">
+        <button class="btn" id="modal-no" style="flex:1">ยกเลิก</button>
+        <button class="btn btn-primary" id="modal-yes" style="flex:1">ยืนยัน</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="qr-full" class="qr-full hidden">
+    <h2 id="qr-full-title"></h2>
+    <div class="muted" id="qr-full-date"></div>
+    <canvas id="qr-full-canvas"></canvas>
+    <div class="muted">สแกนเพื่อเช็คชื่อ</div>
+    <div class="row no-print">
+      <button class="btn" id="qr-print"><i data-lucide="printer"></i>พิมพ์</button>
+      <button class="btn btn-primary" id="qr-close"><i data-lucide="x"></i>ปิด</button>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>

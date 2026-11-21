@@ -52,3 +52,8 @@ export function sortAttendees(rows) {
   const came = rows.filter((r) => r.checked_in_at).sort((a, b) => new Date(a.checked_in_at) - new Date(b.checked_in_at));
   return [...notYet, ...came];
 }
+
+const HTML_ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+export function escapeHtml(s) {
+  return String(s ?? '').replace(/[&<>"']/g, (c) => HTML_ESC[c]);
+}

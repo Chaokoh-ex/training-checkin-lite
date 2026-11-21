@@ -64,3 +64,8 @@ test('sortAttendees does not mutate input', () => {
   sortAttendees(rows);
   assert.equal(rows[0].name, 'ข');
 });
+
+import { escapeHtml } from '../js/lib.js';
+test('escapeHtml neutralises markup in names', () => {
+  assert.equal(escapeHtml(`<img src=x onerror="a">&'`), '&lt;img src=x onerror=&quot;a&quot;&gt;&amp;&#39;');
+});
