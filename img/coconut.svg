@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ต้นมะพร้าว">
+  <path d="M33 26 C35 38 34 50 30 60" stroke="#a5774a" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M33 25 C26 14 14 14 6 20 C16 18 24 20 33 25Z" fill="#5fb36d"/>
+  <path d="M33 25 C40 14 52 14 58 21 C48 18 41 20 33 25Z" fill="#4aa35a"/>
+  <path d="M33 25 C30 15 33 7 40 3 C37 11 36 18 33 25Z" fill="#6cc07a"/>
+  <path d="M33 25 C24 22 15 28 12 36 C19 30 26 27 33 25Z" fill="#4aa35a"/>
+  <path d="M33 25 C42 23 51 29 53 37 C46 31 40 28 33 25Z" fill="#5fb36d"/>
+  <circle cx="30" cy="28" r="3.2" fill="#7a5230"/>
+  <circle cx="36" cy="28.5" r="3.2" fill="#8a5e38"/>
+  <ellipse cx="32" cy="61" rx="14" ry="2.5" fill="#cfe9d3"/>
+</svg>
