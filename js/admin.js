@@ -46,14 +46,26 @@ function renderLogin() {
   $('logout').classList.add('hidden');
   $('who').textContent = '';
   view.innerHTML = `
-    <div class="card stack center" style="padding:32px 16px">
-      <p>เข้าสู่ระบบด้วยบัญชี Google ของแอดมิน</p>
-      <button class="btn btn-primary" id="login"><i data-lucide="log-in"></i>เข้าสู่ระบบด้วย Google</button>
-    </div>`;
-  $('login').onclick = () => supabase.auth.signInWithOAuth({
-    provider: 'google',
-    options: { redirectTo: location.origin + location.pathname },
-  });
+    <form class="card stack" id="login-form" style="padding:24px 16px">
+      <p style="margin:0">ใส่อีเมลแอดมิน แล้วระบบจะส่งลิงก์เข้าสู่ระบบไปที่อีเมลนั้น</p>
+      <input type="text" id="login-email" inputmode="email" autocomplete="email" value="${ADMIN_EMAIL}" aria-label="อีเมล">
+      <button class="btn btn-primary" type="submit" id="login-btn"><i data-lucide="mail"></i>ส่งลิงก์เข้าสู่ระบบ</button>
+      <div id="login-msg" class="muted"></div>
+    </form>`;
+  $('login-form').onsubmit = async (e) => {
+    e.preventDefault();
+    const email = $('login-email').value.trim().toLowerCase();
+    if (email !== ADMIN_EMAIL) { $('login-msg').textContent = 'อีเมลนี้ไม่มีสิทธิ์แอดมิน'; return; }
+    $('login-btn').disabled = true;
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: { emailRedirectTo: location.origin + location.pathname },
+    });
+    $('login-btn').disabled = false;
+    $('login-msg').textContent = error
+      ? (error.status === 429 ? 'ส่งลิงก์บ่อยเกินไป กรุณารอสักครู่แล้วลองใหม่' : 'ส่งลิงก์ไม่สำเร็จ กรุณาลองใหม่')
+      : `ส่งลิงก์ไปที่ ${email} แล้ว — เปิด Gmail แล้วกดลิงก์ในอีเมล (ถ้าไม่เจอ ดูในโฟลเดอร์สแปม)`;
+  };
   icons();
 }
 
